@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
             <!-- Logo -->
-            <a class="navbar-brand" href="Startseite.php">
+            <a class="navbar-brand" href="/Startseite">
                 <img src="07_-_WE-Logo.svg" alt="Web Entwicklung" height="50">
             </a>
             <!-- Toggler Button -->
@@ -13,9 +13,9 @@
             <!-- Collapsible Navigation -->
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="Tasks.php">Tasks</a>
-                    <a class="nav-link" href="Boards.php">Boards</a>
-                    <a class="nav-link" href="Spalten.php">Spalten</a>
+                    <a class="nav-link active" aria-current="page" href="/Tasks">Tasks</a>
+                    <a class="nav-link" href="/Boards">Boards</a>
+                    <a class="nav-link" href="Spalten">Spalten</a>
                 </div>
             </div>
         </div>
