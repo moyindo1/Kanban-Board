@@ -6,6 +6,8 @@ class Home extends BaseController
 {
     public function index()
     {
+
+
         echo view('templates/header');
         echo view('templates/navbar');
         echo view('Startseite');
@@ -14,10 +16,12 @@ class Home extends BaseController
 
     public function tasks()
     {
+
         echo view('templates/header');
         echo view('templates/navbar');
         echo view('Tasks');
         echo view('templates/footer');
+
     }
 
     public function spalten()
@@ -25,6 +29,14 @@ class Home extends BaseController
         echo view('templates/header');
         echo view('templates/navbar');
         echo view('Spalten');
+        echo view('templates/footer');
+    }
+
+    public function spaltenErstellen()
+    {
+        echo view('templates/header');
+        echo view('templates/navbar');
+        echo view('spalten-erstellen');
         echo view('templates/footer');
     }
 
