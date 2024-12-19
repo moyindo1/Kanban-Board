@@ -2,21 +2,16 @@
 
 namespace App\Controllers;
 
-class Home extends BaseController
+use App\Controllers\BaseController;
+
+class Boards extends BaseController
 {
-    public function index()
-    {
+    public function getindex(){
+
+
         echo view('templates/header');
         echo view('templates/navbar');
-        echo view('pages/startseite');
+        echo view('pages/boards_view');
         echo view('templates/footer');
     }
-
-
-
-
-
-
-
-
 }

@@ -8,6 +8,9 @@ Options -Indexes
 # Turning on the rewrite engine is necessary for the following rules and features.
 # FollowSymLinks must be enabled for this to work.
 <IfModule mod_rewrite.c>
+    # Set Development Mode
+    SetEnv CI_ENVIRONMENT development
+
 	Options +FollowSymlinks
 	RewriteEngine On
 

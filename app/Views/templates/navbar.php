@@ -15,9 +15,10 @@
             <!-- Collapsible Navigation -->
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-5">
-                    <a class="nav-link active" aria-current="page" href="/Tasks">Tasks</a>
-                    <a class="nav-link" href="/Boards">Boards</a>
-                    <a class="nav-link" href="/Spalten">Spalten</a>
+                    <a class="nav-link active" aria-current="page" href="/tasks">Tasks</a>
+                    <a class="nav-link" href="/boards">Boards</a>
+                    <a class="nav-link" href="/spalten">Spalten</a>
+                    <a class="nav-link" href="/personen">Personen</a>
                 </div>
             </div>
         </div>

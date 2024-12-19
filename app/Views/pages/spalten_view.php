@@ -7,7 +7,7 @@
         <div class="card-body">
 
 
-                <a href="/spalten-erstellen" class="btn btn-primary mb-2">
+                <a href="/erstellen" class="btn btn-primary mb-2">
                     <i class="fas fa-edit"></i>
                     Erstellen
                 </a>

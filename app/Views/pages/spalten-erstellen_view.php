@@ -41,7 +41,7 @@
 
                 <div class="row mt-4 ms-0">
                     <button class="btn btn-success border col-sm-1" type="submit">Speichern</button>
-                    <a class="btn btn-secondary border col-sm-1" href="/Spalten">Abbrechen</a>
+                    <a class="btn btn-secondary border col-sm-1" href="/spalten">Abbrechen</a>
                 </div>
 
             </form>
