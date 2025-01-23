@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <!-- Logo -->
             <a class="navbar-brand ms-5" href="/Startseite">
-                <img src="07_-_WE-Logo.svg" alt="Web Entwicklung" height="50">
+                <img src="<?= base_url('/images/07_-_WE-Logo.svg'); ?>" alt="Web Entwicklung" height="50">
             </a>
             <!-- Toggler Button -->
             <button class="navbar-toggler btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"

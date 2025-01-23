@@ -41,4 +41,59 @@ class Validation extends BaseConfig
     // --------------------------------------------------------------------
     // Rules
     // --------------------------------------------------------------------
+
+    public $spalten = [
+        'spalte' => 'required',
+        'spaltenbeschreibung' => 'required',
+        'sortid' => 'required|integer',
+        'boardsid' => 'required|integer',
+    ];
+
+    public $tasks = [
+        'tasks' => 'required',
+        'taskartenid' => 'required',
+        'personenid' => 'required',
+        'spaltenid' => 'required',
+        'erinnerungsdatum' => 'required',
+        'notizen' => 'required',
+    ];
+
+    public $tasks_errors = [
+        'tasks' => [
+            'required' => 'Die Task-Bezeichnung ist erforderlich.'
+            ],
+        'taskartenid' => [
+            'required' => 'Die Taskarten-ID ist erforderlich.'
+            ],
+        'personenid' => [
+            'required' => 'Die Personen-ID ist erforderlich.'
+            ],
+        'spaltenid' => [
+            'required' => 'Die Spalten-ID ist erforderlich.'
+            ],
+        'erinnerungsdatum' => [
+            'required' => 'Das Erinnerungsdatum ist erforderlich.'
+            ],
+        'notizen' => [
+            'required' => 'Die Notiz ist erforderlich.'
+            ]
+    ];
+    public $spalten_errors = [
+        'spalte' => [
+            'required' => 'Die Spalten-Bezeichnung ist erforderlich.',
+        ],
+        'spaltenbeschreibung' => [
+            'required' => 'Die Spaltenbeschreibung ist erforderlich.',
+        ],
+        'sortid' => [
+            'required' => 'Die Sort-ID ist erforderlich.',
+            'integer' => 'Die Sort-ID muss eine Zahl sein.',
+        ],
+        'boardsid' => [
+            'required' => 'Die Boards-ID ist erforderlich.',
+            'integer' => 'Die Boards-ID muss eine Zahl sein.',
+        ],
+    ];
+
+
 }

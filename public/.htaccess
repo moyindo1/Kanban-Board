@@ -20,7 +20,7 @@ Options -Indexes
 	# RewriteBase /
 
 	# Redirect Trailing Slashes...
-	RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_URI} (.+)/$
 	RewriteRule ^ %1 [L,R=301]
 
@@ -50,3 +50,4 @@ Options -Indexes
 # Disable server signature start
 ServerSignature Off
 # Disable server signature end
+
