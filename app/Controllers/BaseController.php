@@ -27,25 +27,13 @@ abstract class BaseController extends Controller
      * @var CLIRequest|IncomingRequest
      */
     protected $request;
+    protected $session;
+    protected $validation;
+    protected $model;
 
-    /**
-     * An array of helpers to be loaded automatically upon
-     * class instantiation. These helpers will be available
-     * to all other controllers that extend BaseController.
-     *
-     * @var list<string>
-     */
     protected $helpers = [];
 
-    /**
-     * Be sure to declare properties for any property fetch you initialized.
-     * The creation of dynamic property is deprecated in PHP 8.2.
-     */
-    // protected $session;
 
-    /**
-     * @return void
-     */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
         // Do Not Edit This Line
@@ -56,4 +44,68 @@ abstract class BaseController extends Controller
         $this->validation = \Config\Services::validation();
         // E.g.: $this->session = \Config\Services::session();
     }
+
+    public function render($view, $data = []){
+        echo view('templates/header');
+        echo view('templates/navbar');
+        echo view($view, $data);
+        echo view('templates/footer');
+    }
+
+     protected function edit($view, $id = 0, $todo = 0){
+
+            $data['todo'] = $todo;
+
+             if($id > 0 && ($todo == 1 || $todo == 2))
+                 $data['items'] = $this->model->getRecord($id);
+
+             $this->render($view, $data);
+
+     }
+
+     protected function handleFormSubmission($rules, $data, $errorView, $redirectURL){
+        if($this->validateAndProcess($rules, $errorView, $data)){
+
+
+            if(isset($_POST['btnSpeichern'])){
+
+                if(!empty($_POST['id'])){
+                    $this->model->updateRecord($_POST['id'], $data);
+                }else{
+                    $this->model->createRecord($data);
+                }
+                return redirect()->to(base_url($redirectURL));
+            }
+            elseif (isset($_POST['btnLoeschen'])) {
+                $this->model->deleteRecord($_POST['id']);
+                return $this->redirectTo($redirectURL);
+            }
+            elseif (isset($_POST['btnAbbrechen'])) {
+                return $this->redirectTo($redirectURL);
+            }
+            else {
+                return $this->redirectTo($redirectURL);
+            }
+        }
+     }
+
+     protected function redirectTo($path){
+        return redirect()->to(base_url($path));
+     }
+
+    protected function validateAndProcess($rules, $view, $data){
+
+        if($this->validation->run($_POST, $rules)){
+            return true;
+        }
+        else{
+            $data['items'] = $_POST;
+            $data['errors'] = $this->validation->getErrors();
+            $this->render($view, $data);
+            return false;
+        }
+    }
+
+
+
 }

@@ -95,5 +95,15 @@ class Validation extends BaseConfig
         ],
     ];
 
+    public $boards = [
+        'board' => 'required'
+    ];
+
+    public $boards_errors = [
+        'board' => [
+            'required' => 'Die Boards-Bezeichnung st erforderlich.'
+        ]
+    ];
+
 
 }
