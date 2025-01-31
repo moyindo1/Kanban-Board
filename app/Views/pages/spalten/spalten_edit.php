@@ -27,7 +27,7 @@
             ?>
 
             <form action="<?= base_url('spalten/submit_edit') ?>" method='post'>
-                <input type="hidden" id="id" name="id" value="<?= isset($spalten['id'])? $spalten['id'] : '' ?>">
+                <input type="hidden" id="id" name="id" value="<?= isset($items['id'])? $items['id'] : '' ?>">
 
                 <!-- Form Group -->
                 <?php
@@ -44,14 +44,14 @@
                                 <textarea
                                         class="form-control <?= inputClass($error, $field) ?>"
                                         id="<?= $field ?>"
-                                        name="<?= $field ?>" <?= $readonly ?>><?= esc($spalten[$field] ?? '') ?></textarea>
+                                        name="<?= $field ?>" <?= $readonly ?>><?= esc($items[$field] ?? '') ?></textarea>
                             <?php else : ?>
                                 <input
                                         class="form-control <?= inputClass($error, $field) ?>"
                                         type="text"
                                         id="<?= $field ?>"
                                         name="<?= $field ?>"
-                                        value="<?= esc($spalten[$field] ?? '') ?>" <?= $readonly ?>>
+                                        value="<?= esc($items[$field] ?? '') ?>" <?= $readonly ?>>
                             <?php endif; ?>
                             <div class="invalid-feedback">
                                 <?= displayError($error, $field) ?>
@@ -69,7 +69,7 @@
                                 name="boardsid" <?= $readonly ?>>
                             <option value="">Bitte auswählen</option>
                             <?php for ($i = 1; $i <= 3; $i++) : ?>
-                                <option value="<?= $i ?>" <?= (isset($spalten['boardsid']) && $spalten['boardsid'] == $i) ? 'selected' : '' ?>>Option <?= $i ?></option>
+                                <option value="<?= $i ?>" <?= (isset($items['boardsid']) && $items['boardsid'] == $i) ? 'selected' : '' ?>>Option <?= $i ?></option>
                             <?php endfor; ?>
                         </select>
                         <div class="invalid-feedback"><?= displayError($error, 'boardsid') ?></div>

@@ -20,12 +20,12 @@
             ?>
             <form action="<?= base_url('tasks/submit_edit') ?>" method="post">
 
-                <input type="hidden" id="id" name="id" value="<?=isset($tasks['id']) ? $tasks['id'] : '' ?>">
-                <input type="hidden" id="sortid" name="sortid" value="<?=isset($tasks['sortid']) ? $tasks['sortid'] : '100' ?>">
-                <input type="hidden" id="erstelldatum" name="erstelldatum" value="<?=isset($tasks['erstelldatum']) ? $tasks['erstelldatum'] : '2025-01-14' ?>">
-                <input type="hidden" id="erinnerung" name="erinnerung" value="<?=isset($tasks['erinnerung']) ? $tasks['erinnerung'] : '3' ?>">
-                <input type="hidden" id="erledigt" name="erledigt" value="<?=isset($tasks['erledigt']) ? $tasks['erledigt'] : '3' ?>">
-                <input type="hidden" id="geloescht" name="geloescht" value="<?=isset($tasks['geloescht']) ? $tasks['geloescht'] : '0' ?>">
+                <input type="hidden" id="id" name="id" value="<?=isset($items['id']) ? $items['id'] : '' ?>">
+                <input type="hidden" id="sortid" name="sortid" value="<?=isset($items['sortid']) ? $items['sortid'] : '100' ?>">
+                <input type="hidden" id="erstelldatum" name="erstelldatum" value="<?=isset($items['erstelldatum']) ? $items['erstelldatum'] : '2025-01-14' ?>">
+                <input type="hidden" id="erinnerung" name="erinnerung" value="<?=isset($items['erinnerung']) ? $items['erinnerung'] : '3' ?>">
+                <input type="hidden" id="erledigt" name="erledigt" value="<?=isset($items['erledigt']) ? $items['erledigt'] : '3' ?>">
+                <input type="hidden" id="geloescht" name="geloescht" value="<?=isset($items['geloescht']) ? $items['geloescht'] : '0' ?>">
 
 
                 <?php
@@ -50,7 +50,7 @@
                                     id="<?= $field?>"
                                     class="form-control  <?= inputClass($error, $field) ?> "
                                     placeholder="<?= $label?>"
-                                    value="<?= isset($tasks[$field]) ? (new DateTime($tasks[$field]))->format('Y-m-d'): ''?>"
+                                    value="<?= isset($items[$field]) ? (new DateTime($items[$field]))->format('Y-m-d'): ''?>"
 
                             >
                         <?php elseif($field === 'notizen') :?>
@@ -59,7 +59,7 @@
                                     id="<?= $field?>"
                                     class="form-control <?= inputClass($error, $field) ?>"
                                     placeholder="<?= $label?>"
-                                    ><?= isset($tasks[$field]) ? $tasks[$field]: ''?></textarea>
+                                    ><?= isset($items[$field]) ? $items[$field]: ''?></textarea>
 
                         <?php else :?>
                             <input
@@ -68,7 +68,7 @@
                                     id="<?= $field?>"
                                     class="form-control <?= inputClass($error, $field) ?>"
                                     placeholder="<?= $label?>"
-                                    value="<?= isset($tasks[$field]) ? $tasks[$field]: ''?>"
+                                    value="<?= isset($items[$field]) ? $items[$field]: ''?>"
 
                             >
                         <?php endif;?>

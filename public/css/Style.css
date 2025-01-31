@@ -10,3 +10,21 @@ nav {
  footer{
      background-color: #002060 !important;
  }
+
+#customCardBody {
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.personenkuerzel {
+    text-align: center;
+    padding-top: 0.4em;
+    height: 2.5em;
+    width: 2.5em;
+}
+.customCard{
+    width: 22.5em;
+    min-width: 22.5em;
+    align-self: start;
+}

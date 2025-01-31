@@ -25,7 +25,7 @@
 
                     </thead>
                     <tbody>
-                    <?php foreach ($boards as $item):?>
+                    <?php foreach ($items as $item):?>
                         <tr>
                             <td><?= $item['id']?></td>
                             <td><?= $item['board']?></td>

@@ -23,7 +23,6 @@ abstract class BaseModel extends Model
     }
 
     public function createRecord($data){
-
         return $this->table->insert($data);
     }
 

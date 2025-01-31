@@ -66,21 +66,21 @@ abstract class BaseController extends Controller
      protected function handleFormSubmission($rules, $data, $errorView, $redirectURL){
         if($this->validateAndProcess($rules, $errorView, $data)){
 
+        $postData = $this->request->getPost();
+            if(isset($postData['btnSpeichern'])){
 
-            if(isset($_POST['btnSpeichern'])){
-
-                if(!empty($_POST['id'])){
-                    $this->model->updateRecord($_POST['id'], $data);
+                if(!empty($postData['id'])){
+                    $this->model->updateRecord($postData['id'], $data);
                 }else{
                     $this->model->createRecord($data);
                 }
                 return redirect()->to(base_url($redirectURL));
             }
-            elseif (isset($_POST['btnLoeschen'])) {
-                $this->model->deleteRecord($_POST['id']);
+            elseif (isset($postData['btnLoeschen'])) {
+                $this->model->deleteRecord($postData['id']);
                 return $this->redirectTo($redirectURL);
             }
-            elseif (isset($_POST['btnAbbrechen'])) {
+            elseif (isset($postData['btnAbbrechen'])) {
                 return $this->redirectTo($redirectURL);
             }
             else {
@@ -93,13 +93,23 @@ abstract class BaseController extends Controller
         return redirect()->to(base_url($path));
      }
 
-    protected function validateAndProcess($rules, $view, $data){
 
-        if($this->validation->run($_POST, $rules)){
+    /**
+     * Führt eine Validierung der Formulardaten durch und gibt ggf. Fehler zurück.
+     *
+     * @param array $rules Validierungsregeln
+     * @param string $view View für Fehleranzeige
+     * @param array $data Zusätzliche Daten zur Anzeige
+     * @return bool Gibt true zurück, wenn die Validierung erfolgreich war, sonst false
+     */
+    protected function validateAndProcess($rules, $view, $data){
+        $postData = $this->request->getPost();
+
+        if($this->validation->run($postData, $rules)){
             return true;
         }
         else{
-            $data['items'] = $_POST;
+            $data['items'] = $postData;
             $data['errors'] = $this->validation->getErrors();
             $this->render($view, $data);
             return false;

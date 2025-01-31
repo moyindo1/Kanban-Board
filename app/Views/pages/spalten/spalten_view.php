@@ -28,7 +28,7 @@
 
                     </thead>
                     <tbody>
-                    <?php foreach ($spalten as $item):?>
+                    <?php foreach ($items as $item):?>
                         <tr>
                             <td><?= $item['id']?></td>
                             <td><?= $item['boardsid']?></td>

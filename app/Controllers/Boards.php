@@ -12,7 +12,7 @@ class Boards extends BaseController
         $this->model = new BoardsModel();
     }
     public function getindex(){
-        $data['boards'] = $this->model->getRecord();
+        $data['items'] = $this->model->getRecord();
         return $this->render('pages/boards/boards_view', $data);
     }
 
