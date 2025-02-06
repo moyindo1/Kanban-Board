@@ -61,6 +61,19 @@
                                     placeholder="<?= $label?>"
                                     ><?= isset($items[$field]) ? $items[$field]: ''?></textarea>
 
+
+
+                        <?php elseif($field == 'personenid'):?>
+                            <select class="form-select text-center <?= inputClass($error, 'personenid') ?>" id="personenid"
+                                    name="personenid">
+                                <option value="">Bitte auswählen</option>
+                                <?php foreach ($personen as $person) : ?>
+                                    <option value="<?= $person['id'] ?>" <?= (isset($items['personenid']) && $items['personenid'] == $person['id']) ? 'selected' : '' ?>>
+                                        <?= $person['vorname'].' '.$person['name']?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+
                         <?php else :?>
                             <input
                                     type="text"
@@ -106,3 +119,21 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        let taskInput = document.getElementById("tasks");
+        let personenInput = document.getElementById("personenid");
+
+        if (!taskInput.value.trim()) {
+            taskInput.classList.add("is-invalid");
+            event.preventDefault();
+        }
+
+        if (!personenInput.value) {
+            personenInput.classList.add("is-invalid");
+            event.preventDefault();
+        }
+    });
+
+</script>

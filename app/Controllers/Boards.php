@@ -16,6 +16,8 @@ class Boards extends BaseController
         return $this->render('pages/boards/boards_view', $data);
     }
 
+
+
     public function getced_edit($id = 0, $todo = 0){
         $this->edit('pages/boards/boards_edit', $id, $todo);
     }

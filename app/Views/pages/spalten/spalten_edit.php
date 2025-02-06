@@ -1,6 +1,7 @@
 <div class="container">
     <div class="card mt-4">
         <div class="card-header">
+            <?php $todo = $todo ?? 0; ?>
             <div class="h5"><strong>Datensatz <?= ($todo == 2) ? ' löschen' : ' bearbeiten oder neu erstellen'?></strong></div>
         </div>
         <div class="card-body">
@@ -68,9 +69,9 @@
                         <select class="form-select text-center <?= inputClass($error, 'boardsid') ?>" id="boardsid"
                                 name="boardsid" <?= $readonly ?>>
                             <option value="">Bitte auswählen</option>
-                            <?php for ($i = 1; $i <= 3; $i++) : ?>
-                                <option value="<?= $i ?>" <?= (isset($items['boardsid']) && $items['boardsid'] == $i) ? 'selected' : '' ?>>Option <?= $i ?></option>
-                            <?php endfor; ?>
+                            <?php foreach ($boards as $board) : ?>
+                                <option value="<?= $board['id'] ?>" <?= (isset($items['boardsid']) && $items['boardsid'] == $board['id']) ? 'selected' : '' ?>>Option <?= $board['board']?></option>
+                            <?php endforeach; ?>
                         </select>
                         <div class="invalid-feedback"><?= displayError($error, 'boardsid') ?></div>
                     </div>

@@ -3,13 +3,14 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\BoardsModel;
 use App\Models\SpaltenModel;
 class Spalten extends BaseController
 {
     protected $model;
     public function __construct(){
         $this->model = new SpaltenModel();
-
+        $this->boards = new BoardsModel();
     }
 
     public function getindex(){
@@ -19,7 +20,10 @@ class Spalten extends BaseController
     }
 
     public function getced_edit($id = 0, $todo = 0){
-        $this->edit('pages/spalten/spalten_edit', $id, $todo);
+
+        $data['boards'] = $this->boards->getRecord();
+
+        $this->edit('pages/spalten/spalten_edit', $id, $todo, $data);
     }
 
 

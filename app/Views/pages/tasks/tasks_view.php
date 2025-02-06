@@ -28,7 +28,7 @@
         <div class="card-body">
 
             <!-- Erstellen eines neuen Tasks -->
-            <a href='<?=base_url('Tasks/ced_edit/0/0')?>' class="btn btn-primary mb-2">
+            <a href='<?=base_url('Tasks/ced_edit/0/0/0')?>' class="btn btn-primary mb-2">
                 <i class="fas fa-edit"></i>
                 Erstellen
             </a>
@@ -54,8 +54,11 @@
                             <div class="mb-3 border rounded p-2">
                                 <!-- Erste Zeile: Titel + Dropdown -->
                                 <div class="d-flex justify-content-between">
-                                    <a href="#"><i class="fa-solid fa-house-chimney fa-fw" title="Besuch"></i> <?= $task['tasks']?></a>
-
+                                    <?php foreach($taskarten as $taskart): ?>
+                                    <?php if($taskart['id'] == $task['taskartenid']):?>
+                                    <a href="<?= base_url("tasks/ced_edit/{$task['id']}/1/{$spalte['id']}")?>"><i class="<?= $taskart['taskartenicon']?>" title="Besuch"></i> <?= $task['tasks']?></a>
+                                    <?php endif;?>
+                                    <?php endforeach; ?>
                                     <!--Dropdown-Menü für Aktionen -->
                                     <div class="dropdown position-static">
                                         <button class="btn p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -65,8 +68,8 @@
                                             <li><h6 class="dropdown-header">Action</h6></li>
                                             <li><div class="dropdown-divider"></div></li>
                                             <li> <a class="dropdown-item" href="#"><i class="fas fa-copy text-primary"></i> Text kopieren</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fas fa-edit text-primary"></i> Bearbeiten</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fas fa-trash text-primary"></i> Löschen</a></li>
+                                            <li><a class="dropdown-item" href="<?= base_url("tasks/ced_edit/{$task['id']}/1/0")?>"><i class="fas fa-edit text-primary"></i> Bearbeiten</a></li>
+                                            <li><a class="dropdown-item" href="<?= base_url("tasks/ced_edit/{$task['id']}/2/0")?>"><i class="fas fa-trash text-primary"></i> Löschen</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -80,9 +83,14 @@
                                 <!-- Dritte Zeile: Initialien der Verantwortlichen Person -->
                                 <div class="d-flex justify-content-between">
                                     <div></div>
-                                    <span class="rounded-circle text-xs personenkuerzel" title="Marco Mbachi" style="color: #FFFFFF; background: #0a58ca;">
-                                        MM
-                                    </span>
+                                    <?php foreach ($personen as $person): ?>
+                                        <?php if ($person['id'] == $task['personenid']): ?>
+                                            <span class="rounded-circle text-xs personenkuerzel" title="<?= $person['name'] ?>" style="color: #FFFFFF; background: #0a58ca;">
+                                             <?= substr($person['name'], 0, 2) ?>
+                                            </span>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+
                                 </div>
                             </div> <!-- Abgerundeter Container Ende -->
 
@@ -92,7 +100,7 @@
 
                             <!-- Erstellen Button -->
                             <div>
-                                <a href='<?=base_url('Tasks/ced_edit/0/0')?>' class="btn btn-primary mt-4 mb-2 w-100">
+                                <a href='<?=base_url("Tasks/ced_edit/0/0/{$spalte['id']}")?>' class="btn btn-primary mt-4 mb-2 w-100">
                                     <i class="fas fa-edit"></i>
                                     Erstellen
                                 </a>

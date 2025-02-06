@@ -52,7 +52,7 @@ abstract class BaseController extends Controller
         echo view('templates/footer');
     }
 
-     protected function edit($view, $id = 0, $todo = 0){
+     protected function edit($view, $id = 0, $todo = 0, $data = []){
 
             $data['todo'] = $todo;
 
